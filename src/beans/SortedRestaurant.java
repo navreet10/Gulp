@@ -4,24 +4,24 @@ import model.Restaurant;
 
 public class SortedRestaurant {
 	Restaurant restaurant;
-	float rating;
-	int numRating;
+	double rating;
+	long numRating;
 	public Restaurant getRestaurant() {
 		return restaurant;
 	}
 	public void setRestaurant(Restaurant restaurant) {
 		this.restaurant = restaurant;
 	}
-	public float getRating() {
+	public double getRating() {
 		return rating;
 	}
-	public void setRating(float rating) {
+	public void setRating(double rating) {
 		this.rating = rating;
 	}
-	public int getNumRating() {
+	public long getNumRating() {
 		return numRating;
 	}
-	public void setNumRating(int numRating) {
+	public void setNumRating(long numRating) {
 		this.numRating = numRating;
 	}
 	

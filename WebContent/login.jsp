@@ -19,7 +19,7 @@
 <script src="http://mymaplist.com/js/vendor/TweenLite.min.js"></script>
 <link rel="stylesheet" href="css/style.css" />
 </head>
-<body>
+<body class ="loginBody">
 	<form action="Home" method="post">
 
 		<div class="container">
@@ -35,8 +35,9 @@
 					<div class="panel panel-default">
 						<div class="panel-heading" style="background-color: white;">
 							<div class="row-fluid user-row" style="background-color: white;">
-								<img src="images/bh.jpeg" class="img-responsive"
+								 <img src="images/login.png" class="img-responsive"
 									alt="Conxole Admin" />
+									
 							</div>
 						</div>
 						<div class="panel-body">

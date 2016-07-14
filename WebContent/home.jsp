@@ -89,7 +89,7 @@
 </style>
 <title>Home</title>
 </head>
-<body>
+<body class="body">
 	
 		<div class="container">
 			<br> <br>
@@ -112,8 +112,86 @@
 				<div class="row">
 					<div class="col-sm-2"></div>
 					<div class="col-sm-8">
-						<div id="accordion">
-							<h3>Search:</h3>
+					<br>
+					<a id="showReviews">View Your Reviews:</a>
+					<div id= "reviewsDiv">
+						
+							
+								<c:set var="activity" scope="session" value="${activity}" />
+								<c:if test="${activity != null}">
+									<div class="panel-group">
+										<c:forEach var="activity" items="${activity}">
+											<div class="panel panel-primary">
+												<div class="panel-heading">
+													<table width="100%">
+														<tr>
+															<td align="left">${activity.restaurant.name}</td>
+															<td align="right"><fmt:formatDate type="date"
+																						value="${activity.daterate}" /></td>
+														</tr>
+													</table>
+
+												</div>
+												<div class="panel-body" style="background-image: url('../images/rt${activity.restaurant.id}.jpeg');">
+													<c:out value="${activity.review}"></c:out>
+												</div>
+											</div>
+										</c:forEach>
+									</div>
+								</c:if>
+								<c:if test="${activity == null}">
+									<h2>You are not logged in!!</h2>
+								</c:if>
+							</div>
+					<h3>AllRestaurants:</h3>
+							<form id="target" action="Rate" method="post">
+							<div>
+							<div class="panel-group">
+										<c:forEach var="rests" items="${restaurants}">
+											<div class="panel panel-primary">
+												<div class="panel-heading">
+													<table width="100%">
+														<tr>
+															<td align="left">${rests.restaurant.name}</td>
+															<td align="right">${rests.rating}</td>
+														</tr>
+													</table>
+
+												</div>
+												<div class="panel-body">
+												<c:set var="imgId" value="${rests.restaurant.id}"></c:set>
+												<table width="100%">
+														<tr>
+															<td align="left"><img src="images/rt${rests.restaurant.id}.jpeg" /></td>
+															<td align="right">Number Of ratings:${rests.numRating}</td>
+														</tr>
+														<tr>
+															<td align="left" colspan="2">${rests.restaurant.address}</td>
+															
+														</tr>
+														<tr>
+															<td align="left" colspan="2">${rests.restaurant.zip}</td>															
+														</tr>
+														<tr>
+															<td align="left" colspan="2"> </td>															
+														</tr>
+														<tr> 
+															<td colspan="2" align="left"><c:out value="${rests.restaurant.description}"></c:out></td>
+														</tr>
+													</table>													
+												</div>
+												<div class="panel-footer"> 
+												<div align="right"> <input class='restRate' type="button" id='rest${rests.restaurant.id}' 
+												name='rest${rests.restaurant.id}' value="Rate/View"></div>
+												</div>
+											</div>
+										</c:forEach>
+									</div>						
+								
+							</div>
+							</form>
+						
+							<!-- <h3>Search:</h3>
 							<form id="search" action="Search" method="post">
 							<div>
 								<div class="panel panel-primary">
@@ -140,64 +218,10 @@
 									</div>
 								</div>
 							</div>
-							</form>
-							<h3>AllRestaurants:</h3>
-							<form id="target" action="Rate" method="post">
-							<div>
-								<table class="table table-striped">
-									<thead>
-										<tr>
-											<th>Restaurant Name</th>
-											<th>Address</th>
-											<th>Average Rating</th>
-											<th>Number Of Ratings</th>
-											<th>Rate</th>
-										</tr>
-									</thead>
-									<tbody>
-										<c:forEach var="rests" items="${restaurants}">
-											<tr>
-												<td>${rests.restaurant.name}</td>
-												<td>${rests.restaurant.address}</td>
-												<td>${rests.rating}</td>
-												<td>${rests.numRating}</td>
-												<td><input class='restRate' type="button" id='rest${rests.restaurant.id}' 
-												name='rest${rests.restaurant.id}' value="Rate/View"></td>
-											</tr>
-										</c:forEach>
-									</tbody>
-								</table>
-							</div>
-							</form>
-							<h3>Your Reviews:</h3>
-							<div>
-								<c:set var="activity" scope="session" value="${activity}" />
-								<c:if test="${activity != null}">
-									<div class="panel panel-primary">
-										<c:forEach var="activity" items="${activity}">
-											<div class="panel-group">
-												<div class="panel-heading">
-													<table width="100%">
-														<tr>
-															<td align="left"><img src="" />${activity.restaurant.name}</td>
-															<td align="right"><fmt:formatDate type="date"
-																						value="${activity.daterate}" /></td>
-														</tr>
-													</table>
-
-												</div>
-												<div class="panel-body">
-													<c:out value="${activity.review}"></c:out>
-												</div>
-											</div>
-										</c:forEach>
-									</div>
-								</c:if>
-								<c:if test="${activity == null}">
-									<h2>You are not logged in!!</h2>
-								</c:if>
-							</div>
-						</div>
+							</form> -->
+							
+							
+						
 					</div>
 					<div class="col-sm-2"></div>
 				</div>

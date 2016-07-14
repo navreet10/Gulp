@@ -21,7 +21,7 @@
 <link rel="stylesheet" href="css/style.css" />
 <title>Registration</title>
 </head>
-<body>
+<body class="body">
 	<form action="Registration" method="post">
 		<div class="container">
 			<br> <br>

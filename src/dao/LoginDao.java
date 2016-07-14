@@ -64,7 +64,7 @@ public class LoginDao {
         String qString = "select AVG (s.rating) as average, count(s.id),s.restaurant.id  "
         		+ "from Rating s "
         		+ "group by s.restaurant.id"
-        		+ " order by average";
+        		+ " order by average desc";
         int k =0;
         try{
             Query query = em.createQuery(qString,Rating.class);
@@ -72,10 +72,10 @@ public class LoginDao {
             
            for (Object[] o: results) {
         	   SortedRestaurant restaurant  = new SortedRestaurant();
-        	   restaurant.setRating((float) o[0]);
-        	   restaurant.setNumRating((int) o[1]);
+        	   restaurant.setRating((double) o[0]);
+        	   restaurant.setNumRating((long) o[1]);
         	   TypedQuery<Restaurant> q= em.createQuery("SELECT b FROM Restaurant b where b.id= :id", Restaurant.class);		
-       			q.setParameter("id", (int) o[2]);
+       			q.setParameter("id", (long) o[2]);
         	   Restaurant  res =  q.getSingleResult();
         	   restaurant.setRestaurant(res);
         	   restaurants.add(k,restaurant);

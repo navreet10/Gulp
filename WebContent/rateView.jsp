@@ -89,49 +89,92 @@
 </style>
 <title>Rate</title>
 </head>
-<body>
-	
-		<div class="container">
-			<br> <br>
-			<jsp:include page="NavBar.jsp" />
+<body class="body">
 
-			<div style="background-color: white;" class="panel-body">
-				<div class="row">
-					<div class="col-sm-4">
-						<div align="left"> <img src="rest${img}" alt="${restName}" /></div>
-						<div align="left"><c:out value="${address}"></c:out> </div>
-						<div align="left"><c:out value="${zip}"></c:out> </div>
-						<div align="left"><c:out value="${description}"></c:out> </div>
+	<div class="container">
+		<br> <br>
+		<jsp:include page="NavBar.jsp" />
+
+		<div style="background-color: white;" class="panel-body">
+			<div class="row">
+				<div class="col-sm-4">
+					<div align="left">
+						<img src="images/rt${restid}.jpeg" alt="${restName}" />
 					</div>
-					<div class="col-sm-6"></div>
-
+					<div align="left">
+						<c:out value="${address}"></c:out>
+					</div>
+					<div align="left">
+						<c:out value="${zip}"></c:out>
+					</div>
+					<div align="left">
+						<c:out value="${description}"></c:out>
+					</div>
 				</div>
-				<c:set var="mes" scope="session" value="${message}" />
-				<c:if test="${mes != null}">
-					<div class="alert alert-success">
-						<strong>${message}</strong> <span id="showSearchTerm"></span>
-					</div>
-				</c:if>
-				<div class="row">
-					<div class="col-sm-2"></div>
-					<div class="col-sm-8">			
-					
+				<div class="col-sm-6"></div>
+
+			</div>
+			<c:set var="mes" scope="session" value="${message}" />
+			<c:if test="${mes != null}">
+				<div class="alert alert-success">
+					<strong>${message}</strong> <span id="showSearchTerm"></span>
+				</div>
+			</c:if>
+			<div class="row">
+				<div class="col-sm-2"></div>
+				<div class="col-sm-8">
+					<form id="review" action="SubmitReview" method="post">
 						<div id="accordion">
 							<h3>Rate:</h3>
-							<form id="review" action="SubmitReview" method="post">
-							<div>
+							<div style="overflow: hidden;">
+								<!-- 		
+						<table>
+						<tr><td>Rating:<input type="text" id="rating" name="rating">  </td> </tr>
+						<tr><td><textarea rows="3" cols="80" id="review" name="review"
+										maxlength="450"></textarea> </td> </tr>
+						<tr><td><div id="text"></div></td> </tr>
+						<tr><td align="right"><input type="submit" id="submit" name="submit" value="Rate"></td> </tr>
+						</table> -->
 								<div>
-									<div align="left">Rating:<input type="text" id="rating" name="rating"> </div>
+									<div class="row">
+										<div class="col-sm-4">
+											<div style="background-color: silver;">
+
+												<a href="#" id="start1"><span
+													class="glyphicon glyphicon-star"></span></a>
+												<a href="#" id="start2"><span
+													class="glyphicon glyphicon-star"></span></a> <a href="#"
+													id="start3"><span class="glyphicon glyphicon-star"></span></a>
+												<a href="#" id="start4"><span
+													class="glyphicon glyphicon-star"></span></a> <a href="#"
+													id="start5"><span class="glyphicon glyphicon-star"></span></a>
+
+											</div>
+										</div>
+										<div class="col-sm-6"></div>
+										<div class="col-sm-2">
+											<div align="right">
+												Rating:<input type="text" id="rating" name="rating"
+													style="width: 30px;">
+											</div>
+										</div>
+									</div>
+
+
 								</div>
+								<br> <br>
 								<div>
-									<textarea rows="6" cols="6" id="review" name="review"
-										maxlength="200"></textarea>
+									<textarea rows="3" cols="80" id="review" name="review"
+										maxlength="450"></textarea>
 								</div>
+								<div id="text"></div>
 								<div align="right">
 									<input type="submit" id="submit" name="submit" value="Rate">
 								</div>
+								<br> <br>
+
+
 							</div>
-						</form>
 							<h3>Reviews:</h3>
 							<div>
 								<c:set var="activity" scope="session" value="${restDetails}" />
@@ -142,9 +185,10 @@
 												<div class="panel-heading">
 													<table width="100%">
 														<tr>
-															<td align="left"><img src="${activity.subscriber.url}20" />${activity.subscriber.name}</td>
+															<td align="left"><img
+																src="${activity.subscriber.url}20" />${activity.subscriber.name}</td>
 															<td align="right"><fmt:formatDate type="date"
-																						value="${activity.daterate}" /></td>
+																	value="${activity.daterate}" /></td>
 														</tr>
 													</table>
 
@@ -161,11 +205,12 @@
 								</c:if>
 							</div>
 						</div>
-					</div>
-					<div class="col-sm-2"></div>
+					</form>
 				</div>
-
+				<div class="col-sm-2"></div>
 			</div>
+
 		</div>
+	</div>
 </body>
 </html>
